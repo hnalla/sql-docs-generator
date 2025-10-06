@@ -25,10 +25,10 @@ uv sync
 
 ### Prepare your input CSVs
 
-- procecure defintions.txt (Procedure Name, Procedure Definition)
-- xware_views.csv (View Name, View Definition)
-- xware_tf.csv (dbo, function_name, function_definition)
-- xware_triggers.csv (trigger_name, trigger_definition)
+- procedure_definitions.csv (Procedure Name, Procedure Definition)
+- view_definitions.csv (View Name, View Definition)
+- function_definitions.csv (Function Name, Function Definition)
+- trigger_definitions.csv (Trigger Name, Trigger Definition)
 
 ## 📤 Output
 

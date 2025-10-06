@@ -3,31 +3,47 @@ import pandas as pd
 # === Load and Clean Data === #
 
 # Load procedure definitions
-procedures = pd.read_csv("procecure defintions.txt", header=None, names=['Procedure Name', 'Procedure Definition'])
+procedures = pd.read_csv(
+    "procedure_definitions.csv",
+    header=None,
+    names=["Procedure Name", "Procedure Definition"],
+)
 procedures['Procedure Name'] = procedures['Procedure Name'].str.strip()
 
 # Load view definitions
-views = pd.read_csv('xware_views.csv', header=None, names=['View Name', 'View Definition'])
+views = pd.read_csv(
+    "view_definitions.csv", header=None, names=["View Name", "View Definition"]
+)
 views['View Name'] = views['View Name'].str.strip()
 
 # Load table-valued functions
-functions = pd.read_csv('xware_tf.csv', header=None, names=['dbo', 'Function Name', 'Function Definition'])
-functions['Function Name'] = functions['Function Name'].str.strip()
-functions.drop(columns=['dbo'], inplace=True)
+functions = pd.read_csv(
+    "function_definitions.csv",
+    header=None,
+    names=["Function Name", "Function Definition"],
+)
+functions["Function Name"] = functions["Function Name"].str.strip()
 
 # Load trigger definitions
-triggers = pd.read_csv('xware_triggers.csv', header=None, names=['Trigger Name', 'Trigger Definition'])
+triggers = pd.read_csv(
+    "trigger_definitions.csv", header=None, names=["Trigger Name", "Trigger Definition"]
+)
 triggers['Trigger Name'] = triggers['Trigger Name'].str.strip()
+
 
 # === Markdown Generation Utilities === #
 
-def generate_markdown(df, title, summary_col, content_col, output_file, section_icon, entity_label):
+
+def generate_markdown(
+    df, title, summary_col, content_col, output_file, section_icon, entity_label
+):
     md = [
         f"# {section_icon} {title}\n",
-        f"This document provides a reference for all {entity_label.lower()}s defined in the system.\n",
+        f"This document provides a reference for all "
+        f"{entity_label.lower()}s defined in the system.\n",
         "## 🗂️ Summary Table\n",
         f"| Index | {entity_label} Name |",
-        f"|-------|----------------------|"
+        "|-------|----------------------|",
     ]
 
     for idx, name in enumerate(df[summary_col]):
@@ -42,8 +58,9 @@ def generate_markdown(df, title, summary_col, content_col, output_file, section_
 
     with open(output_file, "w", encoding="utf-8") as f:
         f.write("\n".join(md))
-    
+
     print(f"✅ Markdown documentation generated: {output_file}")
+
 
 # === Generate Documentation === #
 
