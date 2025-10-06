@@ -1,0 +1,6 @@
+[project]
+name = "sql-docs-generator"
+version = "0.1.0"
+description = "A utility for developers to generate Markdown documentation from SQL Server (MSSQL) database objects"
+requires-python = ">=3.12"
+dependencies = ["pandas>=2.3.3"]

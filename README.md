@@ -15,9 +15,12 @@ A utility for developers to generate Markdown documentation from SQL Server (MSS
 
 ## 🛠️ Setup
 
+### Prerequisites
+Make sure you have [UV](https://github.com/astral-sh/uv) installed on your system.
+
 ### Install dependencies 
 ```bash
-pip install pandas
+uv sync
 ```
 
 ### Prepare your input CSVs
@@ -79,7 +82,7 @@ JOIN sys.sql_modules m ON t.object_id = m.object_id;
 Once your CSVs are prepared, run the script:
 
 ```bash 
-python generate_sql_docs.py
+uv run generate_markdown.py
 ```
 
 The Markdown files will be generated in your working directory.
